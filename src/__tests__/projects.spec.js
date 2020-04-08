@@ -13,7 +13,7 @@ describe("Projects", () => {
       });
 
     expect(isUuid(response.body.id)).toBe(true);
-
+    
     expect(response.body).toMatchObject({
       url: "https://github.com/Rocketseat/umbriel",
       title: "Umbriel",
@@ -86,13 +86,13 @@ describe("Projects", () => {
         title: "Umbriel",
         techs: ["React", "ReactNative", "TypeScript", "ContextApi"]
       });
-
+      console.log(repository.body);
     const response = await request(app)
       .put(`/repositories/${repository.body.id}`)
       .send({
         likes: 15
       });
-
+      console.log(response.body)
     expect(response.body).toMatchObject({
       likes: 0
     });
@@ -124,3 +124,4 @@ describe("Projects", () => {
       .expect(400);
   });
 });
+
